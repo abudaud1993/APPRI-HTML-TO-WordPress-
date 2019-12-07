@@ -18,8 +18,8 @@
               <?php echo $appritheme['slider-subtitle'];?>
               </p>
               <div class="slider-btn">
-                <a href="<?php esc_url($appritheme['slider-button1-url']);?>" class="btn"><?php echo $appritheme['slider-button1'];?></a>
-                <a href="<?php esc_url($appritheme['slider-button2-url']);?>" class="btn btn-border"><?php echo $appritheme['slider-button2'];?></a>
+                <a href="<?php echo esc_url($appritheme['slider-button1-url']);?>" class="btn"><?php echo $appritheme['slider-button1'];?></a>
+                <a href="<?php echo esc_url($appritheme['slider-button2-url']);?>" class="btn btn-border"><?php echo $appritheme['slider-button2'];?></a>
               </div>
             </div>
           </div>

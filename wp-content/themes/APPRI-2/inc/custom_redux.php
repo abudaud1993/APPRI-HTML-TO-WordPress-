@@ -330,7 +330,7 @@ Redux::setSection($opt_name, array(
             'title'    => __('Slider Button Url', 'APPRI-THEME'),
             'subtitle' => __('Text', 'APPRI-THEME'),
             'desc'     => __('Input Your Slider Button Url ', 'APPRI-THEME'),
-            'default'  => 'gfdgdg'
+            'default'  => 'https://www.'
         ),
 
         array(
@@ -348,7 +348,7 @@ Redux::setSection($opt_name, array(
             'title'    => __('Slider Button Url', 'APPRI-THEME'),
             'subtitle' => __('Text', 'APPRI-THEME'),
             'desc'     => __('Input Your Slider Button Url ', 'APPRI-THEME'),
-            'default'  => ''
+            'default'  => 'https://wwww.'
         ),
 
         array(
