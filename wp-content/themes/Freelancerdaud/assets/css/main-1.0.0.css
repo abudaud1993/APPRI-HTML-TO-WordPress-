@@ -139,6 +139,9 @@ h6 {
 .site_logo {
   text-align: right;
 }
+.site_logo a img {
+	display: inline-block;
+}
 .main_menu {
 }
 .main_menu ul {
@@ -205,7 +208,7 @@ span.i_am {
 
 section.intro.animate-clip h3 span b {
   color: #0cbb00;
-  font-family: "Raleway", sans-serif;
+  
 }
 
 section.intro.animate-clip {

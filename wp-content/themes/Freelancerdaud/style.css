@@ -12,3 +12,7 @@
 .top-30px {
     margin-top: 30px;
 }
+
+.nav-link {
+	padding: 0;
+}

@@ -1,11 +1,18 @@
 <!-- Footer Section Start -->
+<?php
+// Get options
+$options = get_option('freelancerdaud_theme'); // unique id of the framework
+$contacttitle = $options['CONTACT_title'];  // id of the field
+$contactsubtitle = $options['CONTACT_subtitle'];  // id of the field
+?>
+
 <footer>
       <!-- Contract Section Start -->
       <section class="contract_area mb-60">
         <div class="container">
           <div class="contract_title_subtitle mb-40">
-            <h1>CONTRACT US</h1>
-            <p>Contract for my</p>
+            <h1><?php echo $contacttitle;?></h1>
+            <p><?php echo $contactsubtitle;?></p>
             <hr>
           </div>
           <div class="row">

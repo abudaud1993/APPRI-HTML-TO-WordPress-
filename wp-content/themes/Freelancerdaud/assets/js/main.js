@@ -15,7 +15,7 @@
 	
 		$('.skillbar').skillBars({
 			from: 0,
-			speed: 5000, 
+			speed: 20000, 
 			interval: 100,
 			decimals: 0,
 		});
