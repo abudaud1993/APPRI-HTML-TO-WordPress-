@@ -268,6 +268,40 @@ $rsubtitle = $options['Reviwe_subtitle'];  // id of the field
       </div>
 
       <div class="row">
+      <?php
+          $query = new wp_Query(array(
+
+            'post_type' => 'my_service',
+            'post_per_page'=> '-1',
+            'order'     => 'DSC'
+            
+          ));
+              if($query -> have_posts()){ 
+                  while($query -> have_posts()) : $query -> the_post();
+                  ?>
+
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sx-12">
+                          <div class="service_service">
+                            <div class="service_icon">
+                              <i class="fas fa-laptop"></i>
+                            </div>
+                            <div class="service_title">
+                              <h3><?php the_title();?></h3>
+                            </div>
+                            <div class="service_text">
+                            <?php the_content();?>
+                            </div>
+                          </div>
+                        </div>
+
+                        <?php  
+                endwhile;
+              }
+              ?>
+
+
+
+
         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sx-12">
           <div class="service_service">
             <div class="service_icon">
@@ -365,6 +399,30 @@ $rsubtitle = $options['Reviwe_subtitle'];  // id of the field
     <div class="container">
       <div class="portfolio_margin">
         <div class="row">
+        <?php
+          $query = new wp_Query(array(
+
+            'post_type' => 'Latest_Works',
+            'post_per_page'=> '-1',
+            'order'     => 'DSC'
+            
+          ));
+              if($query -> have_posts()){ 
+                  while($query -> have_posts()) : $query -> the_post();
+                  ?>
+
+          <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sx-12">
+            <div class="portfolio_portfolio">
+              <div class="box_scroll_hover"></div>
+              <h3><?php the_title();?></h3>
+            </div>
+          </div>
+
+                
+          <?php  
+                endwhile;
+              }
+              ?>
           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-sx-12">
             <div class="portfolio_portfolio">
               <div class="box_scroll_hover"></div>

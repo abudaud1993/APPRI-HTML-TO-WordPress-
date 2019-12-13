@@ -1,7 +1,16 @@
 (function($) {
 
 
-		// 	**============================
+		 // data - background - img
+		 $("[data-background]").each(function () {
+			$(this).css(
+			  "background-image",
+			  "url(" + $(this).attr("data-background") + ")"
+			);
+		  });
+	
+	
+	// 	**============================
 		// Animated Headline 
 		// 	**==========================
     $('.animate-clip').animatedHeadline({

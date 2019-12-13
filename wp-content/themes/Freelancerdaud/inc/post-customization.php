@@ -2,7 +2,21 @@
 // *** ============================== ***
 // *** ALL Customizetion Post Start ***
 // *** ============================== ***
+
+
 function Customizetion_post(){
+    register_post_type('my_service', array(
+        'labels' => array(
+            'menu_name'     =>  'My Service Menu',
+            'name'          =>  'My Service',
+            'add_new'       =>  'add new',
+            'all_items'     =>  'all My Service ',
+            'add_new_item'  =>  'add new item',
+        ),
+        'public'  => true,
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'excerpt'),
+        'menu_icon' =>  'dashicons-hammer'
+    ));
     register_post_type('Latest_Works', array(
         'labels' => array(
             'menu_name'     =>  'Latest Works Menu',
