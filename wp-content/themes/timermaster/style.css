@@ -1,0 +1,24 @@
+/*
+ * Theme Name: TIMER MASTER
+ * Theme URI: https://www.timermastercom
+ * Version: 1.0.0
+ * Author: Freelancer Daud
+ * Author URI: freelencerdaud.com
+ * Description: Personel Portfolio Web Said
+ * License: Freelancer daud General Public License v2 or later
+ * License URI: info.freelancerdaud.com
+ * Tags: Timermaster
+*/
+
+
+.top-30px {
+    margin-top: 30px;
+}
+
+li a .caret{
+    display: none;
+}
+sub_menu > a > .caret{
+    display: inline-block;
+
+}

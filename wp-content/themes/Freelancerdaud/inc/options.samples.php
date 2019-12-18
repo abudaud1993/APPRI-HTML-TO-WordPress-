@@ -149,25 +149,44 @@ CSF::createSection( $prefix, array(
 
     ),
 
-    array(
-      'id'     => 'slider-text',
-      'type'   => 'repeater',
-      'title'  => 'Repeater with Slider Text',
-      'fields' => array(
-        array(
-          'id'    => 'opt-text',
-          'type'  => 'text',
-          'title' => 'Text',
-          'after'=>' Inpute Your Slider Text.',
-          'default' => 'WEB DEVELOPER',
-        ),
-      ),
-      'default' => array(
-        array(
-          'opt-text' => 'WEB DESIGNER',
-        ),
-      ),
-    ),
+    // array(
+    //   'id'     => 'slider-text',
+    //   'type'   => 'repeater',
+    //   'title'  => 'Repeater with Slider Text',
+    //   'fields' => array(
+    //     array(
+    //       'id'    => 'opt-text',
+    //       'type'  => 'text',
+    //       'title' => 'Text',
+    //       'after'=>' Inpute Your Slider Text.',
+    //       'default' => 'WEB DEVELOPER ',
+    //     ),
+    //   ),
+    //   'default' => array(
+    //       array(
+    //         'opt-text' => 'WEB DESIGNER ',
+    //       ),
+    //       array(
+    //         'opt-text' => 'WEB DEVELOPER ',
+    //       ),
+    //       array(
+    //         'opt-text' => 'WORDPRESS EXPERAT ',
+    //       ),
+    //       array(
+    //         'opt-text' => 'LOGO DESIGNER ',
+    //       ),
+    //       array(
+    //         'opt-text' => 'DIGITAL MARKETER ',
+    //       ),
+    //       array(
+    //         'opt-text' => 'BUSNESS MAN ',
+    //       ),
+    //       // 'opt-text' => 'HARDWARE BUSINESS MAN',
+        
+    //   ),
+    // ),
+
+
         // social media icon
         array(
           'id'      => 'FaceBook-icon',

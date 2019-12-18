@@ -27,14 +27,11 @@ $worktitle = $options['Works_title'];  // id of the field
 $worksubtitle = $options['Works_subtitle'];  // id of the field
 $rtitle = $options['Reviwe_title'];  // id of the field
 $rsubtitle = $options['Reviwe_subtitle'];  // id of the field
-
-
-
-
 ?>
 
 
 <?php get_header(); ?>
+
 
 
 <!-- Logo and Menu Start -->
@@ -105,6 +102,18 @@ $rsubtitle = $options['Reviwe_subtitle'];  // id of the field
             <section class="intro animate-clip">
               <h3 class="ah-headline">
                 <span class="ah-words-wrapper ">
+                  
+                  <!-- <?php 
+                  $x = 0;
+                  if(is_array($slidertext)){
+                    foreach($slidertext as $slidershow){
+                      $x++;
+                      ?>
+                        <b class="<?php if($x == 1){ echo "is-visible";}; ?>"><?php echo $slidershow; ?></b>
+                    <?php }
+                  }
+                ?> -->
+
                   <b class="is-visible">WEB DESIGNER </b>
                   <b>WEB DEVELOPER </b>
                   <b>WORDPRESS EXPERAT </b>
@@ -112,6 +121,8 @@ $rsubtitle = $options['Reviwe_subtitle'];  // id of the field
                   <b>DIGITAL MARKETER </b>
                   <b>BUSNESS MAN </b>
                   <!-- <b>HARDWARE BUSINESS MAN</b> -->
+
+
                 </span>
               </h3>
             </section>
