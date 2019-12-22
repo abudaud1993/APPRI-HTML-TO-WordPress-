@@ -28,7 +28,7 @@ add_action('after_setup_theme','theme_support');
 require_once('inc/js-css.php');
 require_once('inc/nav_menus.php');
 // require_once('inc/post-customization.php');
-// require_once('inc/footer_widgets_funtion.php');
+require_once('inc/footer_widgets_funtion.php');
 // require_once('inc/add-do-remove-action.php');
 // require_once('inc/codestar-framework-master/codestar-framework.php');
 // require_once('inc/options.samples.php');

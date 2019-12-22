@@ -35,7 +35,7 @@ $rsubtitle = $options['Reviwe_subtitle'];  // id of the field
 
 
 <!-- Logo and Menu Start -->
-<section class="menu_section mb-10">
+<section class="menu_section mb-10 ">
   <div class="simple-menu clearfix ">
     <div class="container">
       <div class="row">
