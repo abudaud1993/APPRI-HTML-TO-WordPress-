@@ -5,7 +5,7 @@
             <footer id="footer">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <p class="copyright">Copyright: <span><script>document.write(new Date().getFullYear())</script></span> Design and Developed by <a href="http://www.Themefisher.com" target="_blank">Themefisher</a>. <br> 
                                 Get More 
                                 <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">
@@ -13,7 +13,7 @@
                                 </a>
                             </p>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="login">
                                 <?php 
                                         if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar('footer-1') ) :	
@@ -26,7 +26,21 @@
                                 ?>
                             </div>
                         </div>
-                        <div class="col-md-4">
+
+                        <div class="col-md-3">
+                            <div class="login">
+                                <?php 
+                                        if ( !function_exists( 'dynamic_sidebar' ) || !dynamic_sidebar('footer-2') ) :	
+                                ?>
+
+                                            <p class="copy"> <strong>Copy Right By</strong>:- FREELANCER DAUD</p>
+
+                                <?php 
+                                        endif; 
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
                             <!-- Social Media -->
                             <ul class="social">
                                 <li>

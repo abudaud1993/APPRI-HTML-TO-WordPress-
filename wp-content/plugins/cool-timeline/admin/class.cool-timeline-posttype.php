@@ -80,30 +80,30 @@ if(!class_exists('CoolTimelinePosttype'))
 		function ctl_custom_columns( $column, $post_id ) {
 			 switch ( $column ) {
         case "story_year":
-        $ctl_story_date = get_post_meta($post_id, 'ctl_story_date', true);
+        $ctl_story_date =get_post_meta($post_id, 'ctl_story_date', true);
         $story_timestamp=strtotime($ctl_story_date);
         if( $story_timestamp!==false){
         $story_year=date("Y", $story_timestamp);
-        echo"<p><strong>" . $story_year . "</strong></p>";
+        echo"<p><strong>" . esc_html($story_year) . "</strong></p>";
         }
          break;
 
          case "story_date":
          $ctl_story_date = get_post_meta($post_id, 'ctl_story_date', true);
-         echo"<p><strong>" . $ctl_story_date . "</strong></p>";
+         echo"<p><strong>" . esc_html($ctl_story_date) . "</strong></p>";
 				  break;
 				case "icon":
                 $icon = get_post_meta( $post_id, 'fa_field_icon', true );
         		if($icon){
-                echo '<i style="font-size:32px;" class="fa '.$icon.'" aria-hidden="true"></i>';
+                echo '<i style="font-size:32px;" class="'.esc_attr($icon).'" aria-hidden="true"></i>';
                  }else{
                 echo '<i  style="font-size:32px;" class="fa fa-clock-o" aria-hidden="true"></i>';
                   }
-              
-				break;
+        break;
+        default:
+            echo "<p>".esc_html_e( 'Not Matched', 'cool-timeline' )."</p>";
 			  }
 		}
-
     public function ctl_generted_page_label( $states ){
       if( isset($_REQUEST['post_type']) && $_REQUEST['post_type'] == 'cool_timeline' ){
           unset($states['scheduled']);
@@ -120,7 +120,6 @@ if(!class_exists('CoolTimelinePosttype'))
         $html .= ' <a href="#normal-sortables"><br/>- Timeline Story Settings (Date/Year)</a>';
         $html .= '</span>';
         $html .= '</div>';
-      
         echo $html;
     
     }

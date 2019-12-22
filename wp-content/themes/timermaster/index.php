@@ -45,7 +45,7 @@
 
 
 
-
+                        <div style="text-align: center; border:3px solid #457898; padding:10px; margin:30px; font-size:30px; ">NO CUSTOMIZATION HEER</div>
 
                     <div class="blog-post-image">
                         <a href="post-fullwidth.html"><img class="img-responsive" src="<?php echo get_template_directory_uri() ?> /images/blog/post-1.jpg" alt="" /></a>

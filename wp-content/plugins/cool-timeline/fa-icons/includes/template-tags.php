@@ -22,7 +22,7 @@ if( ! function_exists( 'get_fa' ) ) {
              }else{
 				$icon="fa ".$icon;
 			 }
-			$output = '<i class="' . $icon . '"></i>';
+			$output = '<i class="' .esc_attr($icon) . '"></i>';
 		} else {
 			$output = $icon;
 		}

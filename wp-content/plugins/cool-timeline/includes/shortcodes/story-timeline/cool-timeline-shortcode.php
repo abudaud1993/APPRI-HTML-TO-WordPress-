@@ -18,7 +18,7 @@ if (!class_exists('CoolTimelineShortcode')) {
 		 	add_action( 'after_setup_theme',array($this, 'ctl_crm'),999 );
 			// custom excerpt length filter for story content
 			add_filter('excerpt_length', array($this, 'ctl_excerpt_length'), 999);
-        }
+		}
 		function ctl_crm() {
 			add_filter('excerpt_more', array($this,'ctl_excerpt_more'), 999);
 		}
@@ -36,7 +36,6 @@ if (!class_exists('CoolTimelineShortcode')) {
 					return $more;
 			   }
 		  }
-
 		  	// story content length filter callback
 		function ctl_excerpt_length( $length ) {
 			global $post;
@@ -54,7 +53,6 @@ if (!class_exists('CoolTimelineShortcode')) {
 			}
 			
 		}
-	
 
 		/*
 		  cool-timeline shortcode main
@@ -76,11 +74,23 @@ if (!class_exists('CoolTimelineShortcode')) {
 				'show-posts'=>'',
 				'skin'=>'default'
                     ), $atts);
-			$skin=$attribute['skin'];
+			$skin=esc_attr($attribute['skin']);
 			$ctl_options_arr = get_option('cool_timeline_options');
 			$layout=$attribute['layout'];
+
+			 // set stories animations
+			 if($attribute['animation']){
+				if($attribute['animation']=='fadeInUp'){
+					$ctl_animation='fade-up';
+				}else{
+					$ctl_animation=$attribute['animation'];
+				}
+			 }else{
+			  $ctl_animation ='fade-up';
+			 }
+
 			// loading timeline assets on shortcode specific page
-			$this->ctl_load_assets($layout);
+			$this->ctl_load_assets($layout,$ctl_animation);
 				
 			// get all settings
 			 $ctl_title_text =isset($ctl_options_arr['title_text'])?$ctl_options_arr['title_text']:'';
@@ -117,7 +127,7 @@ if (!class_exists('CoolTimelineShortcode')) {
 			$post_skin_cls = 'light-grey-post';
 			$wrapper_cls = 'white-timeline-wrapper';$output='';$ctl_html='';$ctl_avtar_html='';
 			// set default var for later use
-			$display_year = '';	$wrp_cls='';$ctl_format_html='';$ctl_html_no_cont='';$ctl_animation='';$st_cls=''; $post_content="";
+			$display_year = '';	$wrp_cls='';$ctl_format_html='';$ctl_html_no_cont='';$st_cls=''; $post_content="";
 			 $horizontal_html="";
 			 // custom date format
 			$format =__('d/M/Y','cool-timeline');
@@ -148,16 +158,7 @@ if (!class_exists('CoolTimelineShortcode')) {
 			}else{
 			 $clt_icons="icons_no";
 			}
-			     // set stories animations
-				if($attribute['animation']){
-					if($attribute['animation']=='fadeInUp'){
-						$ctl_animation='fade-up';
-					}else{
-						$ctl_animation=$attribute['animation'];
-					}
-                 }else{
-                  $ctl_animation ='fade-up';
-                 }
+			    
                   
 
            if($layout !="simple"){
@@ -234,9 +235,9 @@ if (!class_exists('CoolTimelineShortcode')) {
                      $display_year = $post_year;
                      $year_cls=$this->ctl_story_cls($post_year);
 						$ctle_year_lbl = sprintf('<span class="ctl-timeline-date">%s</span>', $post_year);
-						$ctl_html .= '<div  data-aos="'. $ctl_animation.'"  class="timeline-year scrollable-section"
-						data-section-title="' . $post_year . '" id="clt-' . $post_year . '">
-						<div class="icon-placeholder">' . $ctle_year_lbl . '</div>
+						$ctl_html .= '<div  data-aos="'. esc_attr($ctl_animation).'"  class="timeline-year scrollable-section"
+						data-section-title="' . esc_attr($post_year) . '" id="clt-' . esc_attr($post_year) . '">
+						<div class="icon-placeholder">' . $ctle_year_lbl. '</div>
 						<div class="timeline-bar"></div>
 						</div>';
 						}
@@ -252,7 +253,7 @@ if (!class_exists('CoolTimelineShortcode')) {
 		        $p_cls[]=esc_attr($post_skin_cls);
 		        $p_cls[]=esc_attr($clt_icons);
 		        $p_cls[]=$layout=="compact"?"timeline-mansory":'';
-				$p_cls[]= esc_attr($skin).'-skin';
+				$p_cls[]= $skin.'-skin';
 			
 		        $p_cls=apply_filters('ctl_story_clasess',$p_cls);
 					
@@ -260,9 +261,9 @@ if (!class_exists('CoolTimelineShortcode')) {
 				$ctl_html .='<!-- .timeline-post-start-->';
 				$ctl_html .='<div  class="'.implode(" ",$p_cls).'"  id="story-'.esc_attr($p_id).'">';
 				if($layout!="compact"){
-				$ctl_html .='<div  data-aos="'. $ctl_animation.'" class="timeline-meta">';
+				$ctl_html .='<div  data-aos="'.esc_attr($ctl_animation).'" class="timeline-meta">';
 				if($disable_months=="no"){
-					$ctl_html .= '<div class="meta-details">' . $posted_date . '</div>';
+					$ctl_html .= '<div class="meta-details">'.esc_html($posted_date) . '</div>';
 				} 
 				$ctl_html .= '</div>';
 				}
@@ -278,29 +279,29 @@ if (!class_exists('CoolTimelineShortcode')) {
 		 
 				 // if icon settings is enable from shortcode
   			if (isset($attribute['icons']) && $attribute['icons'] == "YES") {
-			$ctl_html .='<div   data-aos="'. $ctl_animation.'" class="timeline-icon icon-larger iconbg-turqoise icon-color-white">
+			$ctl_html .='<div   data-aos="'. esc_attr($ctl_animation).'" class="timeline-icon icon-larger iconbg-turqoise icon-color-white">
                     	<div class="icon-placeholder">'.$icon.'</div>
                         <div class="timeline-bar"></div>
                     </div>';
 			}else {
-			$ctl_html .= '<div  data-aos="'. $ctl_animation.'" class="timeline-icon icon-dot-full"><div class="timeline-bar"></div></div>';
+			$ctl_html .= '<div  data-aos="'.esc_attr($ctl_animation).'" class="timeline-icon icon-dot-full"><div class="timeline-bar"></div></div>';
 			}
 
-	 $ctl_html .= '<div  data-aos="'. $ctl_animation.'" class="timeline-content clearfix">';
+	 $ctl_html .= '<div  data-aos="'.esc_attr($ctl_animation).'" class="timeline-content clearfix">';
 // story date for compact layout
 	 if($layout =="compact"){
 	 if($disable_months=="no"){
 		$ctl_html .= '<h2 class="content-title">' . $posted_date . '</h2>';
 			} 
 		}else{
-		     $ctl_html .= '<h2 class="content-title">' . get_the_title($p_id) . '</h2>';
+		     $ctl_html .= '<h2 class="content-title">' . esc_html(get_the_title($p_id)) . '</h2>';
  		}	
-    $ctl_html .= '<div class="ctl_info event-description ' . $container_cls . '">';
+    $ctl_html .= '<div class="ctl_info event-description ' .esc_attr($container_cls) . '">';
     $ctl_html .=$this->clt_story_featured_img($p_id,$layout);
     $ctl_html .= '<div class="content-details">';
 
 	 if($layout =="compact"){
-	 $ctl_html .= '<h3 class="content-title-cmt">'.get_the_title($p_id).'</h3>';
+	 $ctl_html .= '<h3 class="content-title-cmt">'.esc_html(get_the_title($p_id)).'</h3>';
 		}
 	 $ctl_html .=$post_content;
 	 $ctl_html .= '</div></div></div><!-- timeline content --></div><!-- .timeline-post-end -->';
@@ -312,7 +313,7 @@ if($layout =="horizontal"){
 	$h_story_content='';
 	$post_year=ctlfree_get_story_date($p_id,__('Y','cool-timeline'));
 	$year_cls=$this->ctl_story_cls($post_year);
-	$horizontal_html.='<li class="year-'.$post_year.' '.$even_odd.' '.$year_cls.'">';
+	$horizontal_html.='<li class="year-'.esc_attr($post_year).' '.esc_attr($even_odd).' '.esc_attr($year_cls).'">';
 	// grabing Highlighted Year
 	if($attribute['date-format']==""||$attribute['date-format']=="Y"){
 		$story_main_date=ctlfree_get_story_date($p_id,__('Y','cool-timeline'));
@@ -320,20 +321,20 @@ if($layout =="horizontal"){
 		$story_main_date=$posted_date;
 	}
 			if( $display_readmore=="yes"){
-				$horizontal_html.='<a ref="prettyPhoto" href="#ctl-story-'.$p_id.'">';
+				$horizontal_html.='<a ref="prettyPhoto" href="#ctl-story-'.esc_attr($p_id).'">';
 			}
-			$horizontal_html.='<div class="ctl-story-year"><span class="rm_year">'.$story_main_date.'</span></div>';
+			$horizontal_html.='<div class="ctl-story-year"><span class="rm_year">'.esc_html($story_main_date).'</span></div>';
 			$horizontal_html.='<div class="ctl-story-title"><p class="story_title">';
-			$horizontal_html.=get_the_title($p_id);
+			$horizontal_html.=esc_html(get_the_title($p_id));
 			$horizontal_html.='</p></div>';
 			if( $display_readmore=="yes"){
 				$horizontal_html.='</a>';
 			}
 			
-		$horizontal_html.='<div id="ctl-story-'.$p_id.'" class="ctl_hide"><div class="ctl-popup-content">
-			<h2>'.get_the_title().'</h2>';
+		$horizontal_html.='<div id="ctl-story-'.esc_attr($p_id).'" class="ctl_hide"><div class="ctl-popup-content">
+			<h2>'.esc_html(get_the_title()).'</h2>';
 			$story_posted_date=ctlfree_get_story_date($p_id,__(apply_filters( 'cool_timeline_story_date','F j, Y'),'cool-timeline'));
-			$horizontal_html.='<div class="story-posted-date">'.$story_posted_date.'</div>';
+			$horizontal_html.='<div class="story-posted-date">'.esc_html($story_posted_date).'</div>';
 			$horizontal_html .=$this->clt_story_featured_img($p_id,$layout);
 			$horizontal_html.='<div class="story-content">'.$post_content.'</div>';
 		$horizontal_html.='</div></div>';
@@ -370,15 +371,15 @@ if($layout!="horizontal"){
 
 		$output .= '<div class="'.implode(" ",$main_wrp_cls).'">';
 		if (isset($user_avatar[0]) && !empty($user_avatar[0])) {
-					$ctl_avtar_html .= '<div class="avatar_container row"><span title="' . $ctl_title_text . '"><img  class="center-block img-responsive img-circle" alt="' . $ctl_title_text . '" src="' . $user_avatar[0] . '"></span></div> ';
+					$ctl_avtar_html .= '<div class="avatar_container row"><span title="' .esc_attr($ctl_title_text) . '"><img  class="center-block img-responsive img-circle" alt="' . $ctl_title_text . '" src="' . $user_avatar[0] . '"></span></div> ';
 				}
 			  //  if ($title_visibilty == "yes") {
                 $output .= sprintf(__('<%s class="timeline-main-title center-block">%s</%s>', 'cool-timeline'), $ctl_title_tag, $ctl_title_text, $ctl_title_tag);
             //}	
 				$output .= $ctl_avtar_html;
-			$output .= '<div class="cool-timeline white-timeline ultimate-style ' . $layout_wrp . ' ' . $wrp_cls.
+			$output .= '<div class="cool-timeline white-timeline ultimate-style ' .esc_attr($layout_wrp). ' ' .esc_attr($wrp_cls).
 			' ' .$layout_cls.'">';
-			$output .= '<div data-animations="'.$ctl_animation.'"  id="' . $timeline_id . '" class="cooltimeline_cont  clearfix '.$clt_icons.'">';
+			$output .= '<div data-animations="'.esc_attr($ctl_animation).'"  id="' .esc_attr($timeline_id). '" class="cooltimeline_cont  clearfix '.esc_attr($clt_icons).'">';
 			if($layout=="compact"){
 				$output .='<div class="center-line">
             </div>';
@@ -412,7 +413,7 @@ $output .='<div class="ctl-preloader-loader" style="text-align:center;"><img alt
 		opacity:0;
 		}</style>';
 
-	  $output .= '<div class="cool_timeline_horizontal"><ul data-slide-to-show="'.$slidetoshow.'" class="ctl_road_map_wrp">';
+	  $output .= '<div class="cool_timeline_horizontal"><ul data-slide-to-show="'.esc_attr($slidetoshow).'" class="ctl_road_map_wrp">';
  			$output .=$horizontal_html;
  			$output .='</ul></div>';
  		}
@@ -448,7 +449,7 @@ $output .='<div class="ctl-preloader-loader" style="text-align:center;"><img alt
 		$imgAlt = get_post_meta(get_post_thumbnail_id($post_id),'_wp_attachment_image_alt', true); 
 		$alt_text=$imgAlt?$imgAlt:get_the_title($post_id);
 		 $img_f_url = wp_get_attachment_url(get_post_thumbnail_id($post_id));
-		 $story_img_link = '<a title="' . esc_attr(get_the_title($post_id)). '"  href="' . $img_f_url . '" class="ctl_prettyPhoto">';
+		 $story_img_link = '<a title="' . esc_attr(get_the_title($post_id)). '"  href="' .esc_url($img_f_url). '" class="ctl_prettyPhoto">';
 			
 		    if ( has_post_thumbnail($post_id) ) {
 				if ($img_cont_size == "small"){
@@ -486,9 +487,9 @@ $output .='<div class="ctl-preloader-loader" style="text-align:center;"><img alt
 			
 			$ctl_options_arr = get_option('cool_timeline_options');
 		
-			$post_content_face=$ctl_options_arr['post_content_typo']['face'];
-			$post_title=$ctl_options_arr['post_title_typo']['face'];
-			$main_title=$ctl_options_arr['main_title_typo']['face'];
+			$post_content_face=isset($ctl_options_arr['post_content_typo']['face'])?$ctl_options_arr['post_content_typo']['face']:"";
+			$post_title=isset($ctl_options_arr['post_title_typo']['face'])?$ctl_options_arr['post_title_typo']['face']:"";
+			$main_title=isset($ctl_options_arr['main_title_typo']['face'])?$ctl_options_arr['main_title_typo']['face']:"";
 			$selected_fonts = array($post_content_face,$post_title,$main_title);
 		   /*
             * google fonts
@@ -539,7 +540,7 @@ $output .='<div class="ctl-preloader-loader" style="text-align:center;"><img alt
 	  
 			 }
 		// loading js and css according to the layout type in shortcode	 
-		function ctl_load_assets($layout){
+		function ctl_load_assets($layout,$ctl_animation){
 			// all common assets
 		
 			wp_enqueue_style('ctl-default-fonts');
@@ -549,8 +550,11 @@ $output .='<div class="ctl-preloader-loader" style="text-align:center;"><img alt
 			wp_enqueue_style('ctl-styles');
 			// vertical layout only assets.
 			if($layout!="horizontal"){
-				wp_enqueue_script('aos-js');
-				wp_enqueue_style('aos-css');
+				if($ctl_animation !='none'){
+					wp_enqueue_script('aos-js');
+					wp_enqueue_style('aos-css');
+				}
+				
 				wp_enqueue_script('ctl-scripts');
 			}
 		// compact layout dynamic Js

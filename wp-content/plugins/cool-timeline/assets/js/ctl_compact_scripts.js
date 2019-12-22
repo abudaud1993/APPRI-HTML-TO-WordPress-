@@ -59,7 +59,12 @@
  
             });
  
-            AOS.refresh();
+            var timeline_id=jQuery('.cooltimeline_cont').attr('id');            
+            var animations=jQuery("#"+timeline_id).attr("data-animations");            
+        	if(animations!="none") {
+        		AOS.refresh();
+        	}
+            
  
         }, 800);
     });

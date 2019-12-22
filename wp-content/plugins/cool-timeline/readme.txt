@@ -145,7 +145,7 @@ You can show history/future stories, events, appointments and many other cool th
 We have tried our best to create an awesome **timeline plugin** but still if you face any installation, coding or design error, you can [contact us](mailto:contact@coolplugins.net) anytime. Also remember to try our Cool Timeline Pro version for extra cool features and design options.
 
 > [Buy Cool Timeline Pro](https://1.envato.market/c/1258464/275988/4415?u=https%3A%2F%2Fcodecanyon.net%2Fitem%2Fcool-timeline-pro-wordpress-timeline-plugin%2F17046256) | [Check Timeline Pro Documentation](https://docs.coolplugins.net/doc/cool-timeline-pro/installation/)
-[](http://coderisk.com/wp/plugin/cool-timeline/RIPS-iy3ljT3MXf)
+
 == Installation ==
 
 ### 3 Ways To Install Cool Timeline
@@ -257,6 +257,13 @@ function ctl_stories_readmore($read_more_text) {
 7. Create any type of timeline using Cool timeline PRO .
 
 == Changelog ==
+= Version 1.9.3 |13 DEC 2019 =
+* Added:security checks
+* Added:Added esc_attr and esc_html in the shortcode HTML
+* Added: Loaded assets based upon conditions
+* Fixed: Story date AM/PM issues
+* Improved: Improved plugin security 
+* Improved: Default case checks
 = Version 1.9.2 |22 Nov 2019 =
 * Added:Integrated preloader in horizontal timeline
 * Fixed: Horizontal timeline popup image link issue

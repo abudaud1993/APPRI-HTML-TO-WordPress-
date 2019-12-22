@@ -3,8 +3,8 @@ Contributors: Heateor, jatin8heateor, farhan8heateor
 Donate link: https://www.heateor.com/donate/?action=Sassy+Social+Share
 Tags: social share, social sharing, social media share, share facebook, facebook social share, wordpress social share, share buttons, social share buttons, facebook like, twitter tweet, whatsapp share, line share
 Requires at least: 2.5.0
-Tested up to: 5.3
-Stable tag: 3.3.4
+Tested up to: 5.3.1
+Stable tag: 3.3.7
 License: GPLv2 or later
 
 Slickest, Simplest and Optimized Share buttons. Facebook, Twitter, Reddit, Pinterest, WhatsApp and over 100 more.
@@ -123,6 +123,19 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 4. **Universal Sharing Popup**: Universal Sharing popup having all the supported sharing and bookmarking services
 
 == Changelog ==
+= 3.3.7 [14 December 2019] =
+[New] Christmas surprise
+[Bugfix] Pinterest Pin button was showing pin count even if share count was disabled from options
+
+= 3.3.6 [28 November 2019] =
+[Bugfix] Previous version was breaking social share on custom posts
+[New] Added option (in Miscellaneous section) to control if Javascript should be loaded on every page or only where it's needed
+
+= 3.3.5 [27 November 2019] =
+[Improvement] Javascript is being loaded only at the webpages where social share icons are integrated
+[Improvement] Admin UI improvements (<a href="https://www.heateor.com/comparison-between-sassy-social-share-pro-and-premium/">Pro and Premium</a> versions now available)
+[Bugfix] "Load Javascript files in footer" option was coming twice at plugin options page
+
 = 3.3.4 [6 November 2019] =
 [Bugfix] Fixed XSS vulnerability on "heateor_sss_sharing_count" AJAX action
 
@@ -842,3 +855,16 @@ Yes, we can help you with it. Just drop an email at support[at]heateor[dot]com
 
 = 3.3.4 [6 November 2019] =
 [Bugfix] Fixed XSS vulnerability on "heateor_sss_sharing_count" AJAX action
+
+= 3.3.5 [27 November 2019] =
+[Improvement] Javascript is being loaded only at the webpages where social share icons are integrated
+[Improvement] Admin UI improvements (<a href="https://www.heateor.com/comparison-between-sassy-social-share-pro-and-premium/">Pro and Premium</a> versions now available)
+[Bugfix] "Load Javascript files in footer" option was coming twice at plugin options page
+
+= 3.3.6 [28 November 2019] =
+[Bugfix] Previous version was breaking social share on custom posts
+[New] Added option (in Miscellaneous section) to control if Javascript should be loaded on every page or only where it's needed
+
+= 3.3.7 [14 December 2019] =
+[New] Christmas surprise
+[Bugfix] Pinterest Pin button was showing pin count even if share count was disabled from options

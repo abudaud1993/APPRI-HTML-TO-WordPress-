@@ -16,9 +16,12 @@ class UsersFeedback{
     */
     public function __construct(){
         add_action('admin_enqueue_scripts', array( $this, 'enqueue_feedback_scripts') );
-        add_action('admin_head', array( $this, 'show_deactivate_feedback_popup') );
+    
         add_action('wp_ajax_'.$this->plugin_slug.'_submit_deactivation_response', array($this, 'submit_deactivation_response' ));
-
+        add_action('admin_init',array($this,'onInit'));
+    }
+    public function onInit(){
+        add_action('admin_head', array( $this, 'show_deactivate_feedback_popup') );
     }
     /*
     |-----------------------------------------------------------------|
@@ -39,12 +42,6 @@ class UsersFeedback{
     |-----------------------------------------------------------------|
     */
     public function show_deactivate_feedback_popup() {
-
-		if( isset( $GLOBALS['COOL_FEEDBACK_FORM'] ) ){
-			return;
-		}
-		$GLOBALS['COOL_FEEDBACK_FORM'] = true;
-		
 		$screen = get_current_screen();
 		if( !isset( $screen ) || $screen->id != 'plugins' ){
 			return;

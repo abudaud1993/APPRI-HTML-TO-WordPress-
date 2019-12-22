@@ -2314,7 +2314,7 @@ if ( ! class_exists( 'BF_Admin_Page_Class') ) :
         $name = $field['id'];
         $type = $field['type'];
         $old = isset($saved[$name])? $saved[$name]: NULL;
-        $new = ( isset( $_POST[$name] ) ) ? $_POST[$name] : ( ( isset($field['multiple']) && $field['multiple']) ? array() : '' );
+        $new = ( isset( $_POST[$name] ) ) ?$_POST[$name] : ( ( isset($field['multiple']) && $field['multiple']) ? array() : '' );
               
 
         //Validate and senitize meta value
@@ -3437,11 +3437,11 @@ if ( ! class_exists( 'BF_Admin_Page_Class') ) :
       echo json_encode($re);
       die();
     }
-    $import_code = $_POST['imp'];
+    $import_code =sanitize_text_field($_POST['imp']);
     $import_code = str_replace("<!*!* START export Code !*!*>\n","",$import_code);
     $import_code = str_replace("\n<!*!* END export Code !*!*>","",$import_code);
     $import_code = base64_decode($import_code);
-    $import_code = unserialize($import_code);
+    $import_code = json_decode($import_code);
     if (is_array($import_code)){
       update_option($this->option_group,$import_code);
       $re['success']= __('Setting imported, make sure you ','apc'). '<input class="button-primary" type="button"  value="'. __('Refresh this page','apc').'" id="apc_refresh_page_b" />';
@@ -3517,7 +3517,7 @@ if ( ! class_exists( 'BF_Admin_Page_Class') ) :
 
   public function Handle_plupload_action(){
     // check ajax noonce
-    $imgid = $_POST["imgid"];
+    $imgid = sanitize_text_field($_POST["imgid"]);
     check_ajax_referer($imgid . 'pluploadan');
  
     // handle file upload

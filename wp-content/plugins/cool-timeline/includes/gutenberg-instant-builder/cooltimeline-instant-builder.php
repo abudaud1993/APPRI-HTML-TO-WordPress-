@@ -57,13 +57,18 @@ class CoolTimelineInstantBuilder {
      * Functions
      *--------------------------------------------*/
 			
-		function gctl_timeline_fronted_block_assets() {
-			// Styles.
-			wp_enqueue_style(
-				'gctl-timeline-styles-css',
-				GCTL_PLUGIN_URL.'dist/blocks.style.build.css',
-				array()
-			);
+		function gctl_timeline_fronted_block_assets() {		
+			
+			// check ctl/instant-timeline exists or not					
+			$id = get_the_ID();			
+			if (has_block('ctl/instant-timeline', $id)) {
+				wp_enqueue_style(
+					'gctl-timeline-styles-css',
+					GCTL_PLUGIN_URL.'dist/blocks.style.build.css',
+					array()
+				);
+			}
+
 		}
 
 
@@ -92,7 +97,11 @@ class CoolTimelineInstantBuilder {
 			array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
 			// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: filemtime — Gets file modification time.
 		);
-
+		wp_enqueue_style(
+			'gctl-timeline-styles-css',
+			GCTL_PLUGIN_URL.'dist/blocks.style.build.css',
+			array()
+		);
 		$pathToPlugin =GCTL_PLUGIN_URL.'dist/';
 		wp_add_inline_script( 'wp-blocks', 'var ctl_timeline_gutenberg_path = "' .$pathToPlugin.'"', 'before');
 	}

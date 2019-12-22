@@ -514,7 +514,7 @@ function heateorSssMoreSharingPopup(elem, postUrl, postTitle, twitterTitle){
 		locale: "en-US",
 		redirect_url: "//yoolink.to/addorshare?url_value=" + postUrl + "&title=" + postTitle,
 	  }
-	}
+	};
 	var heateorSssMoreSharingServicesHtml = '<button id="heateor_sss_sharing_popup_close" class="close-button separated"><img src="'+ heateorSssCloseIconPath +'" /></button><div id="heateor_sss_sharing_more_content" data-href="'+ decodeURIComponent(postUrl) +'"><div class="filter"><input type="text" onkeyup="heateorSssFilterSharing(this.value.trim())" placeholder="Search" class="search"></div><div class="all-services"><ul class="mini">';
 	for(var i in heateorSssMoreSharingServices){
 		var tempTitle = heateorSssCapitaliseFirstLetter(heateorSssMoreSharingServices[i].title.replace(/[_. ]/g, ""));
